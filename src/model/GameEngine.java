@@ -7,7 +7,7 @@ import model.EstadoJogo;
 import java.util.ArrayList;
 import java.util.List;
 
-// REQUISITO: APLICAÇÃO DE AGREGAÇÃO
+// APLICAÇÃO DE AGREGAÇÃO
 public class GameEngine {
 
     private Grupo grupoJogadores;
@@ -52,47 +52,44 @@ public class GameEngine {
             return;
         }
 
-        StringBuilder resultado = new StringBuilder();
         int rolagem = Dados.d20();
         int modificador = lider.getAtributos().getModInteligencia();
         int total = rolagem + modificador;
 
-        resultado.append("Rolagem de Investigação: ").append(rolagem)
-                .append(" + ").append(modificador).append(" (INT) = ").append(total).append("\n");
+        GameLog.print("Rolagem de Investigação: " + rolagem + " + " + modificador + " (INT) = " + total);
 
         boolean iniciarCombate = false;
         boolean surpresa = false;
 
         if (alvo.equalsIgnoreCase("cavalos")) {
             if (total >= 10) {
-                resultado.append("SUCESSO: Ao examinar os cavalos, você nota flechas de penas pretas.\n");
-                resultado.append("São flechas de Goblin! O grupo ganha 10 XP.");
+                GameLog.print("SUCESSO: Ao examinar os cavalos, você nota flechas de penas pretas.");
+                GameLog.print("São flechas de Goblin! O grupo ganha 10 XP.");
 
                 for(Jogador j : grupoJogadores.getMembrosVivos()) j.ganharExperiencia(10);
             } else {
-                resultado.append("FALHA: Os cavalos estão mortos. Nada mais chama atenção.");
+                GameLog.print("FALHA: Os cavalos estão mortos. Nada mais chama atenção.");
             }
+
         } else if (alvo.equalsIgnoreCase("arbustos")) {
             int modSabedoria = lider.getAtributos().getModSabedoria();
             int totalSab = Dados.d20() + modSabedoria;
 
-            resultado.append("\n(Teste de Percepção do Líder: ").append(totalSab).append(")\n");
+            GameLog.print("(Teste de Percepção do Líder: " + totalSab + ")");
 
             if (totalSab >= 15) {
-                resultado.append("SUCESSO: Você nota movimento! Goblins estavam escondidos!");
+                GameLog.print("SUCESSO: Você nota movimento! Goblins estavam escondidos!");
                 iniciarCombate = true;
                 surpresa = false;
             } else {
-                resultado.append("FALHA: O vento balança os arbustos...\n");
-                resultado.append("DE REPENTE! Flechas voam e Goblins saltam!");
+                GameLog.print("FALHA: O vento balança os arbustos...");
+                GameLog.print("DE REPENTE! Flechas voam e Goblins saltam!");
                 iniciarCombate = true;
                 surpresa = true;
             }
         } else {
-            resultado.append("Não há nada de interessante em '").append(alvo).append("'.");
+            GameLog.print("Não há nada de interessante em '" + alvo + "'.");
         }
-
-        GameLog.print(resultado.toString());
 
         if (iniciarCombate) {
             iniciarCombate(surpresa);
@@ -243,17 +240,17 @@ public class GameEngine {
         if (indiceJogadorAtual >= vivos.size()) indiceJogadorAtual = 0;
         Jogador atual = vivos.get(indiceJogadorAtual);
 
-        GameLog.print("\n========================================");
+        GameLog.printRapido("\n========================================");
         GameLog.print(" VEZ DE " + atual.getNome().toUpperCase() + " (HP " + atual.getPontosDeVida() + ")");
-        GameLog.print("========================================");
+        GameLog.printRapido("========================================");
         listarMonstros();
-        GameLog.print("----------------------------------------");
-        GameLog.print(" OPÇÕES:");
-        GameLog.print("  atacar [n]   - Atacar inimigo N");
-        GameLog.print("  usar [item]  - Usar item do inventário");
-        GameLog.print("  fugir        - Tentar fugir");
-        GameLog.print("----------------------------------------");
-        GameLog.print("Qual sua ação?");
+        GameLog.printRapido("----------------------------------------");
+        GameLog.printRapido(" OPÇÕES:");
+        GameLog.printRapido("  atacar [n]   - Atacar inimigo N");
+        GameLog.printRapido("  usar [item]  - Usar item do inventário");
+        GameLog.printRapido("  fugir        - Tentar fugir");
+        GameLog.printRapido("----------------------------------------");
+        GameLog.printRapido("Qual sua ação?");
     }
 
 
@@ -273,8 +270,10 @@ public class GameEngine {
         for (Monstro m : monstrosAtuais) {
             if (m.isEstaVivo() && !vivos.isEmpty()) {
 
-                int indexAlvo = Dados.rolar(vivos.size()) - 1;
-                Jogador alvo = vivos.get(indexAlvo);
+                // USANDO O MÉTODO GENÉRICO PARA ESCOLHER O ALVO
+                // O Java infere automaticamente que T é 'Jogador'
+                Jogador alvo = Dados.escolherAleatorio(vivos);
+
                 m.atacar(alvo);
             }
         }

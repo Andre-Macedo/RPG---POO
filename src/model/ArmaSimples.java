@@ -2,8 +2,10 @@ package model;
 
 import utils.GameLog;
 
+// Interface
 public class ArmaSimples implements Item {
 
+    // Encapsulamento
     private String nome;
     private String descricao;
     private int danoBase;

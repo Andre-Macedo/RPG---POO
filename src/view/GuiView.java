@@ -21,29 +21,22 @@ public class GuiView extends JFrame implements GameView {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // --- ESTILIZAÇÃO VISUAL ---
-
-        // 1. Área de Texto
         areaTexto = new JTextArea();
         areaTexto.setEditable(false);
-        // Fonte estilo "Console Moderno" e maior
+
         areaTexto.setFont(new Font("Consolas", Font.PLAIN, 16));
         areaTexto.setLineWrap(true);
         areaTexto.setWrapStyleWord(true);
 
-        // Cores: Fundo Cinza Escuro (tipo VS Code) e Texto Claro
         areaTexto.setBackground(new Color(40, 42, 54));
         areaTexto.setForeground(new Color(248, 248, 242));
 
-        // Margem interna para o texto não colar na borda
         areaTexto.setBorder(new EmptyBorder(15, 15, 15, 15));
 
         JScrollPane scrollPane = new JScrollPane(areaTexto);
-        // Remove a borda feia do scrollpane
         scrollPane.setBorder(null);
         add(scrollPane, BorderLayout.CENTER);
 
-        // 2. Painel Inferior (Input)
         JPanel painelInferior = new JPanel(new BorderLayout());
         painelInferior.setBorder(new EmptyBorder(10, 10, 10, 10));
         painelInferior.setBackground(new Color(68, 71, 90)); // Um cinza um pouco mais claro
@@ -64,7 +57,6 @@ public class GuiView extends JFrame implements GameView {
 
         painelInferior.add(campoEntrada, BorderLayout.CENTER);
 
-        // Adiciona um espaçador entre o input e o botão
         JPanel espacador = new JPanel();
         espacador.setPreferredSize(new Dimension(10, 0));
         espacador.setOpaque(false);
@@ -73,22 +65,19 @@ public class GuiView extends JFrame implements GameView {
 
         add(painelInferior, BorderLayout.SOUTH);
 
-        // --- LÓGICA DE EVENTOS (Igual ao anterior) ---
         ActionListener acaoEnvio = e -> enviarComando();
         botaoEnviar.addActionListener(acaoEnvio);
         campoEntrada.addActionListener(acaoEnvio);
 
         setLocationRelativeTo(null);
         setVisible(true);
-        campoEntrada.requestFocus(); // Já foca no campo de texto ao abrir
+        campoEntrada.requestFocus();
     }
 
     private void enviarComando() {
         String texto = campoEntrada.getText();
         if (!texto.trim().isEmpty()) {
-            // Exibe o que o usuário digitou com uma cor diferente ou prefixo
-            // Aqui mandamos direto pro método interno para pular o GameLog.print se quisermos,
-            // ou usamos o GameLog mesmo.
+
             exibirMensagem("\n> " + texto.toUpperCase());
 
             synchronized (lock) {

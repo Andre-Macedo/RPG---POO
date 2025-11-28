@@ -6,6 +6,7 @@ import model.Monstro;
 import utils.GameLog;
 import model.Dados;
 
+// Herança
 public class GoblinArqueiro extends Monstro {
 
     public GoblinArqueiro() {

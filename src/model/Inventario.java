@@ -22,14 +22,14 @@ public class Inventario {
     public void adicionarItem(Item item) {
         this.itens.add(item);
         if (imprimirMensagens) {
-            GameLog.print("  > " + item.getNome() + " foi adicionado ao inventário.");
+            GameLog.printRapido("  > " + item.getNome() + " foi adicionado ao inventário.");
         }
     }
 
     public void removerItem(Item item) {
         this.itens.remove(item);
         if (imprimirMensagens) {
-            GameLog.print("  > " + item.getNome() + " foi removido do inventário.");
+            GameLog.printRapido("  > " + item.getNome() + " foi removido do inventário.");
         }
     }
 
@@ -45,16 +45,16 @@ public class Inventario {
 
     public void listarItens() {
         if (itens.isEmpty()) {
-            GameLog.print("Inventário está vazio.");
+            GameLog.printRapido("Inventário está vazio.");
             return;
         }
 
-        GameLog.print("--- Inventário ---");
+        GameLog.printRapido("--- Inventário ---");
 
         for (Item item : this.itens) {
-            GameLog.print("- " + item.getNome() + ": " + item.getDescricao());
+            GameLog.printRapido("- " + item.getNome() + ": " + item.getDescricao());
         }
-        GameLog.print("------------------");
+        GameLog.printRapido("------------------");
     }
 
     public void setImprimirMensagens(boolean imprimir) {

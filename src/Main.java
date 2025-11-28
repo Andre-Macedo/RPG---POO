@@ -99,14 +99,14 @@ public class Main {
 
             while (rodando) {
                 // --- MENU PRINCIPAL ---
-                GameLog.print("\n=========================================");
-                GameLog.print("   AS MINAS PERDIDAS DE PHANDELVER (RPG) ");
-                GameLog.print("=========================================");
-                GameLog.print("   1 - Iniciar Nova Aventura");
-                GameLog.print("   2 - Sobre / Créditos");
-                GameLog.print("   3 - Sair");
-                GameLog.print("=========================================");
-                GameLog.print("Escolha uma opção:");
+                GameLog.printRapido("\n=========================================");
+                GameLog.printRapido("   AS MINAS PERDIDAS DE PHANDELVER (RPG) ");
+                GameLog.printRapido("=========================================");
+                GameLog.printRapido("   1 - Iniciar Nova Aventura");
+                GameLog.printRapido("   2 - Sobre / Créditos");
+                GameLog.printRapido("   3 - Sair");
+                GameLog.printRapido("=========================================");
+                GameLog.printRapido("Escolha uma opção:");
 
                 String opcao = view.obterEntradaUsuario();
 
@@ -123,18 +123,18 @@ public class Main {
                         System.exit(0);
                         break;
                     default:
-                        GameLog.print("Opção inválida. Tente novamente.");
+                        GameLog.printRapido("Opção inválida. Tente novamente.");
                 }
             }
         }).start();
     }
 
     private static void exibirCreditos(GameView view) {
-        GameLog.print("\n--- CRÉDITOS ---");
-        GameLog.print("Desenvolvido para a disciplina de POO por André Macedo e Pedro Alves");
-        GameLog.print("SENAC - Engenharia de Computação");
-        GameLog.print("Baseado nas aventura introdutórias de D&D 5e.");
-        GameLog.print("\nPressione [Enviar] para voltar.");
+        GameLog.printRapido("\n--- CRÉDITOS ---");
+        GameLog.printRapido("Desenvolvido para a disciplina de POO por André Macedo e Pedro Alves");
+        GameLog.printRapido("SENAC - Engenharia de Computação");
+        GameLog.printRapido("Baseado nas aventura introdutórias de D&D 5e.");
+        GameLog.printRapido("\nPressione [Enviar] para voltar.");
         view.obterEntradaUsuario();
     }
 
@@ -145,33 +145,33 @@ public class Main {
         GameEngine engine = new GameEngine(grupo);
         GameController controller = new GameController(engine, view);
 
-        view.exibirMensagem("\n#################################################");
-        view.exibirMensagem("#       CAPÍTULO 1: AS FLECHAS GOBLIN           #");
-        view.exibirMensagem("#################################################");
+        GameLog.printRapido("\n#################################################");
+        GameLog.printRapido("#       CAPÍTULO 1: AS FLECHAS GOBLIN           #");
+        GameLog.printRapido("#################################################");
 
-        view.exibirNarrativa("Há alguns dias, na cidade de Neverwinter, vocês encontraram Gundren Rockseeker.");
-        view.exibirNarrativa("O anão estava eufórico. Ele dizia ter encontrado algo grande...");
-        view.exibirNarrativa("'Algo que mudaria a fortuna de todos', ele disse, batendo na mesa da taverna.");
+        GameLog.narrar("Há alguns dias, na cidade de Neverwinter, vocês encontraram Gundren Rockseeker.");
+        GameLog.narrar("O anão estava eufórico. Ele dizia ter encontrado algo grande...");
+        GameLog.narrar("'Algo que mudaria a fortuna de todos', ele disse, batendo na mesa da taverna.");
 
-        view.exibirNarrativa("\nGundren contratou vocês para escoltar uma carroça de suprimentos até Phandalin.");
-        view.exibirNarrativa("Ele partiu à frente, a cavalo, acompanhado do guerreiro Sildar Hallwinter.");
-        view.exibirNarrativa("'Vejo vocês na cidade!', gritou ele ao partir.");
+        GameLog.narrar("\nGundren contratou vocês para escoltar uma carroça de suprimentos até Phandalin.");
+        GameLog.narrar("Ele partiu à frente, a cavalo, acompanhado do guerreiro Sildar Hallwinter.");
+        GameLog.narrar("'Vejo vocês na cidade!', gritou ele ao partir.");
 
-        view.exibirNarrativa("\nA viagem pela Estrada Alta foi tranquila... até agora.");
-        view.exibirNarrativa("Vocês acabam de entrar na Trilha de Triboar.");
-        view.exibirNarrativa("A floresta aqui é densa e o silêncio é perturbador.");
+        GameLog.narrar("\nA viagem pela Estrada Alta foi tranquila... até agora.");
+        GameLog.narrar("Vocês acabam de entrar na Trilha de Triboar.");
+        GameLog.narrar("A floresta aqui é densa e o silêncio é perturbador.");
 
-        view.exibirNarrativa("\nAo fazer uma curva fechada, a carroça para bruscamente.");
-        view.exibirNarrativa("Dois cavalos mortos bloqueiam o caminho. Estão crivados de flechas pretas.");
-        view.exibirNarrativa("Parecem ser os cavalos de Gundren e Sildar...");
+        GameLog.narrar("\nAo fazer uma curva fechada, a carroça para bruscamente.");
+        GameLog.narrar("Dois cavalos mortos bloqueiam o caminho. Estão crivados de flechas pretas.");
+        GameLog.narrar("Parecem ser os cavalos de Gundren e Sildar...");
 
-        GameLog.print("\n--- COMANDOS DISPONÍVEIS ---");
-        GameLog.print("\n--- O QUE VOCÊ DESEJA FAZER? ---");
-        GameLog.print("  > investigar cavalos   (Teste de INT/Investigação)");
-        GameLog.print("  > investigar arbustos  (Teste de WIS/Percepção)");
-        GameLog.print("  > status               (Ver sua ficha)");
-        GameLog.print("  > inventario           (Ver itens do líder)");
-        GameLog.print("----------------------------");
+        GameLog.printRapido("\n--- COMANDOS DISPONÍVEIS ---");
+        GameLog.printRapido("\n--- O QUE VOCÊ DESEJA FAZER? ---");
+        GameLog.printRapido("  > investigar cavalos   (Teste de INT/Investigação)");
+        GameLog.printRapido("  > investigar arbustos  (Teste de WIS/Percepção)");
+        GameLog.printRapido("  > status               (Ver sua ficha)");
+        GameLog.printRapido("  > inventario           (Ver itens do líder)");
+        GameLog.printRapido("----------------------------");
 
         // Inicia o Loop do Jogo
         controller.iniciarJogo();
@@ -184,14 +184,14 @@ public class Main {
 
 
     private static Jogador criarPersonagem(GameView view) {
-        GameLog.print("Digite o nome do seu herói:");
+        GameLog.printRapido("Digite o nome do seu herói:");
 
         String nome = view.obterEntradaUsuario();
 
-        GameLog.print("\nEscolha sua classe (digite o número):");
-        GameLog.print("1 - Guerreiro");
-        GameLog.print("2 - Ladino");
-        GameLog.print("3 - Mago");
+        GameLog.printRapido("\nEscolha sua classe (digite o número):");
+        GameLog.printRapido("1 - Guerreiro");
+        GameLog.printRapido("2 - Ladino");
+        GameLog.printRapido("3 - Mago");
 
         String escolha = view.obterEntradaUsuario();
         Atributos atributos;
@@ -220,18 +220,18 @@ public class Main {
     private static Grupo criarGrupo(GameView view) {
         Grupo grupo = new Grupo();
 
-        GameLog.print("--- CRIAÇÃO DO LÍDER ---");
+        GameLog.printRapido("--- CRIAÇÃO DO LÍDER ---");
         Jogador lider = criarPersonagem(view);
         grupo.adicionarMembro(lider);
 
-        GameLog.print("\nDeseja recrutar companheiros? (S/N)");
+        GameLog.printRapido("\nDeseja recrutar companheiros? (S/N)");
         String resp = view.obterEntradaUsuario();
 
         if (resp.equalsIgnoreCase("s")) {
-            GameLog.print("Escolha seus aliados (digite os números separados, ex: 1 3)");
-            GameLog.print("1 - Sildar (Guerreiro Humano)");
-            GameLog.print("2 - Ellywick (Mago Gnomo)");
-            GameLog.print("3 - Reidoth (Druida/Clérigo)");
+            GameLog.printRapido("Escolha seus aliados (digite os números separados, ex: 1 3)");
+            GameLog.printRapido("1 - Sildar (Guerreiro Humano)");
+            GameLog.printRapido("2 - Ellywick (Mago Gnomo)");
+            GameLog.printRapido("3 - Reidoth (Druida/Clérigo)");
 
             String selecao = view.obterEntradaUsuario();
 
@@ -239,13 +239,13 @@ public class Main {
                 Jogador sildar = new Jogador("Sildar Hallwinter");
                 sildar.setAtributos(new Atributos(16, 10, 14, 10, 10, 12));
                 grupo.adicionarMembro(sildar);
-                GameLog.print("Sildar se juntou ao grupo.");
+                GameLog.printRapido("Sildar se juntou ao grupo.");
             }
             if (selecao.contains("2")) {
                 Jogador mago = new Jogador("Ellywick");
                 mago.setAtributos(new Atributos(8, 14, 12, 16, 12, 10));
                 grupo.adicionarMembro(mago);
-                GameLog.print("Ellywick se juntou ao grupo.");
+                GameLog.printRapido("Ellywick se juntou ao grupo.");
             }
             // ... etc
         }

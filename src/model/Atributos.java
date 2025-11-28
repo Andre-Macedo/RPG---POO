@@ -2,6 +2,7 @@ package model;
 
 public class Atributos {
 
+    // Encapsulamento
     private int forca;
     private int destreza;
     private int constituicao;

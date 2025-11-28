@@ -24,7 +24,7 @@ public abstract class Entidade {
         this.estaVivo = true;
         this.atributos = atributos;
 
-        // Em D&D, a AC base é 10 + Modificador de Destreza (sem armadura)
+        // Em D&D, a AC (Armour Class = Classe de Armadura) base é 10 + Modificador de Destreza (sem armadura)
         this.classeArmadura = 10 + atributos.getModDestreza();
     }
 
@@ -61,7 +61,7 @@ public abstract class Entidade {
         GameLog.print("  > " + this.nome + " recupera " + cura + " de vida. Vida atual: " + this.pontosDeVida);
     }
 
-    // REQUISITO: PREPARAÇÃO PARA POLIMORFISMO
+    // POLIMORFISMO
     public abstract void atacar(Entidade alvo);
 
     public String getNome() {

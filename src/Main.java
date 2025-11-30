@@ -10,78 +10,12 @@ import view.GuiView;
 
 public class Main {
 
-    //------------- Console --------------------
+    /**
 
-//    public static void main(String[] args) {
-//
-//
-//        GameView view = new ConsoleView();
-//
-//        Jogador jogador = criarPersonagem(view);
-//
-//        GameEngine engine = new GameEngine(jogador);
-//
-//        GameController controller = new GameController(engine, view);
-//
-//        // REQUISITO: QUALIDADE DA TRAMA
-//        view.exibirMensagem("\n#################################################");
-//        view.exibirMensagem("#       AS MINAS PERDIDAS DE PHANDELVER         #");
-//        view.exibirMensagem("#################################################");
-//        view.exibirMensagem("\nVocê está na Trilha de Triboar, a meio dia de viagem de Phandalin.");
-//        view.exibirMensagem("Você escolta uma carroça de suprimentos mineração.");
-//        view.exibirMensagem("A estrada faz uma curva fechada e você vê algo à frente...");
-//        view.exibirMensagem("\nDois cavalos mortos bloqueiam o caminho. O mato ao redor é denso.");
-//        view.exibirMensagem("O silêncio é perturbador.");
-//
-//        view.exibirMensagem("\n--- O QUE VOCÊ DESEJA FAZER? ---");
-//        view.exibirMensagem("  > investigar cavalos   (Teste de INT/Investigação)");
-//        view.exibirMensagem("  > investigar arbustos  (Teste de WIS/Percepção)");
-//        view.exibirMensagem("  > status               (Ver sua ficha)");
-//        view.exibirMensagem("  > sair");
-//        view.exibirMensagem("--------------------------------");
-//
-//
-//        controller.iniciarJogo();
-//    }
-//
-//    private static Jogador criarPersonagem(GameView view) {
-//        view.exibirMensagem("--- CRIAÇÃO DE PERSONAGEM ---");
-//        view.exibirMensagem("Qual é o nome do seu herói?");
-//        String nome = view.obterEntradaUsuario();
-//
-//        view.exibirMensagem("\nEscolha sua classe:");
-//        view.exibirMensagem("1 - Guerreiro (Forte e Resistente)");
-//        view.exibirMensagem("2 - Ladino    (Ágil e Esperto)");
-//        view.exibirMensagem("3 - Mago      (Inteligente e Frágil)");
-//
-//        String escolha = view.obterEntradaUsuario();
-//        Atributos atributos;
-//
-//        switch (escolha) {
-//            case "2": // Ladino
-//                view.exibirMensagem("Classe selecionada: LADINO");
-//                // STR 10, DEX 15, CON 12, INT 14, WIS 13, CHA 8
-//                atributos = new Atributos(10, 15, 12, 14, 13, 8);
-//                break;
-//            case "3": // Mago
-//                view.exibirMensagem("Classe selecionada: MAGO");
-//                // STR 8, DEX 13, CON 12, INT 15, WIS 14, CHA 10
-//                atributos = new Atributos(8, 13, 12, 15, 14, 10);
-//                break;
-//            case "1":
-//            default: // Guerreiro (Padrão)
-//                view.exibirMensagem("Classe selecionada: GUERREIRO");
-//                // STR 15, DEX 12, CON 14, INT 10, WIS 13, CHA 8
-//                atributos = new Atributos(15, 12, 14, 10, 13, 8);
-//                break;
-//        }
-//
-//        Jogador novoJogador = new Jogador(nome);
-//        novoJogador.setAtributos(atributos);
-//
-//
-//        return novoJogador;
-//    }
+     Intgrantes do Grupo: André Macedo, Gustavo Fernandes e Pedro Alves.
+
+    */
+
 
 
 
@@ -175,11 +109,8 @@ public class Main {
         GameLog.printRapido("  > inventario           (Ver itens do líder)");
         GameLog.printRapido("----------------------------");
 
-        // Inicia o Loop do Jogo
         controller.iniciarJogo();
 
-        // Quando controller.iniciarJogo() termina (Game Over ou Vitória da Demo),
-        // o código volta para cá e depois retorna ao laço do Menu Principal.
         GameLog.print("\nPressione [Enviar] para voltar ao Menu Principal.");
         view.obterEntradaUsuario();
     }
